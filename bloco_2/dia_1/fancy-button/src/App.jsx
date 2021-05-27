@@ -12,22 +12,29 @@ export default class App extends Component {
       color: 'white',
     }
     this.handleClick = this.handleClick.bind(this);
+    this.countHandle = this.countHandle.bind(this); 
     console.log('Componente Sendo Construido');
   }
 
+  countHandle(e) {
+    console.log(e.target);
+    this.setState((curState, props) => ({
+      count: curState.count = this.state.count + 1, 
+    }));
+  }
 
   handleClick(e) {
-    console.log(this);
-    const btn = e.target.innerText;
-    btn === 'Vermelho' ? console.log('Vermelho') :
-    btn === 'Verde' ? console.log('Verde') : console.log('Azul');
+    const color = window.getComputedStyle(e.target, null).getPropertyValue("background-color");
+    this.setState((curState, props) => ({
+      background: curState.background = color,
+    }));
   }
 
   render() {
     console.log(this);
     return (
       <div className="containerApp">
-      <div className="counter" style={{background: this.state.background, color: this.state.color}} >
+      <div className="counter" onClick={this.countHandle} style={{background: this.state.background, color: this.state.color}} >
         <div className="count">{this.state.count}</div>
       </div>
       <button className="button red" onClick={this.handleClick}>Vermelho</button>
