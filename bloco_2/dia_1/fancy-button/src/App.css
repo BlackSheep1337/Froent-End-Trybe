@@ -1,0 +1,29 @@
+.containerApp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.button {
+  margin: 0 20px;
+  width: 100px;
+  height: 30px;
+  border: 3px solid black;
+  color: white;
+  font-weight: 900;
+  border-radius: 7%;
+}
+
+.red {
+  background-color: rgba(255, 0, 0, 0.658);
+}
+
+.green {
+  background-color: rgba(0, 128, 0, 0.658);
+}
+
+.blue {
+  background-color: rgba(0, 0, 255, 0.61);
+}
