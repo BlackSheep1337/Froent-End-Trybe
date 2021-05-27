@@ -27,3 +27,21 @@
 .blue {
   background-color: rgba(0, 0, 255, 0.61);
 }
+
+.counter {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 50px;
+  border: 2px solid black;
+  width: 250px;
+  height: 170px;
+  border-radius: 50%;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
