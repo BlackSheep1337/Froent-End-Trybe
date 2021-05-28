@@ -1,45 +1,71 @@
 import { Component } from 'react';
+import '../index.css';
 
 export default class Form extends Component {
   constructor(props) {
     super(props);
+
+
     this.state = {
-      name: '',
-      lastName: '',
-      age: 0,
-      tag: '',
-      textarea: ''
+      email: '',
+      password: ''
     }
-    this.handleInputChange = this.handleInputChange.bind(this);
+    // this.handleEmail = this.handleEmail.bind(this);
+    // this.handlePassword = this.handlePassword.bind(this);
+    this.handleInputs = this.handleInputs.bind(this);
   }
 
-  handleInputChange(event) {
+  // handleEmail({ target }) {
+  //   console.log(target.value);
+  //   this.setState({
+  //     email: target.value,
+  //   })
+  // }
+  
+  // handlePassword({ target }) {
+  //   console.log(target.value);
+  //   this.setState({
+  //     password: target.value,
+  //   })
+  // }
+
+  handleInputs({ target }) {
+    const { name, value } = target;
+    
     this.setState({
-      name: event.target.value,
-      lastName: event.target.value,
+      [name]: value
     })
   }
 
+
   render() {
     return (
-      <form>
-        <label>
-          <input 
-          type="text"
-          value={this.state.name}
-          onChange={this.handleInputChange}
-          placeholder="Name"
-          />
-        </label>
-        <label>
-          <input 
-          type="text"
-          value={this.state.lastName}
-          onChange={this.handleInputChange}
-          placeholder="Last Name"
-          />
-        </label>
-      </form>
+      <main className="main">
+        <form className="form">
+          <h3>League of Legends</h3>
+          <label className="input">
+            <input
+            name="email"
+            type="text"
+            placeholder="Digite seu email"
+            onChange={this.handleInputs}
+            />
+          </label>
+
+          <label className="input">
+            <input
+            name="password"
+            type="password"
+            placeholder="Digite sua senha"
+            onChange={this.handleInputs}
+            />
+          </label>
+          <label className="input">
+            <button>Logar</button>
+          </label>
+
+        </form>
+      </main>
     );
   }
 }
