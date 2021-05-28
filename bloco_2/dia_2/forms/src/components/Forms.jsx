@@ -48,6 +48,7 @@ export default class Form extends Component {
             name="email"
             type="text"
             placeholder="Digite seu email"
+            value={this.state.email}
             onChange={this.handleInputs}
             />
           </label>
@@ -57,6 +58,7 @@ export default class Form extends Component {
             name="password"
             type="password"
             placeholder="Digite sua senha"
+            value={this.state.password}
             onChange={this.handleInputs}
             />
           </label>
