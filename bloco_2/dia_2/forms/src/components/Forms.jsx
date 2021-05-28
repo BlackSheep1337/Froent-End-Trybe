@@ -30,7 +30,9 @@ export default class Form extends Component {
   // }
 
   handleInputs({ target }) {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ?
+    target.checked : target.value;
     
     this.setState({
       [name]: value
