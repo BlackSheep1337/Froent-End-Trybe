@@ -9,42 +9,18 @@ export default class Form extends Component {
       email: '',
       idade: 0,
       vaiComparecer: false,
-      palavraChaveFavorita: ''
+      palavraChaveFavorita: '',
+      selectedOption: 'bahia',
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleTextAreaChange(e) {
-    console.log(e.target.value);
-    this.setState({ estadoFavorito: e.target.value });
-  }
-
-  handleEmail(e) {
-    this.setState({ email: e.target.value })
-  }
-
-  handleName(e) {
-    this.setState({ 
-      nome: e.target.value,
-    })
-  }
-
-  handleIdade(e) {
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    console.log(value);
     this.setState({
-      idade: e.target.value
-    })
-  }
-
-  handleCheckbox(e) {
-    console.log(e.target.checked)
-    this.setState({
-      vaiComparecer: e.target.checked
-    })
-  }
-
-  handleSelect(e) {
-    console.log(e.target.value);
-    this.setState({
-      palavraChaveFavorita: e.target.value
+      [name]: value
     })
   }
 
@@ -58,7 +34,7 @@ export default class Form extends Component {
               <textarea 
                 name="estadoFavorito" 
                 value={this.state.estadoFavorito} 
-                onChange={this.handleTextAreaChange.bind(this)}>
+                onChange={this.handleChange}>
               </textarea>
             </label>
 
@@ -66,9 +42,9 @@ export default class Form extends Component {
               Email
               <input 
               name="email" 
-              type="email" 
+              type="email"
               value={this.state.email}
-              onChange={this.handleEmail.bind(this)}
+              onChange={this.handleChange}
               />
             </label>
             
@@ -77,7 +53,7 @@ export default class Form extends Component {
               <input 
               name="nome" 
               type="text" 
-              onChange={this.handleName.bind(this)}
+              onChange={this.handleChange}
               value={this.state.nome}
               />
             </label>
@@ -87,7 +63,7 @@ export default class Form extends Component {
               <input
               name="idade" 
               type="number"
-              onChange={this.handleIdade.bind(this)}
+              onChange={this.handleChange}
               value={this.state.idade}
               />
             </label>
@@ -97,7 +73,7 @@ export default class Form extends Component {
               <input 
               name="vaiComparecer" 
               type="checkbox" 
-              onChange={this.handleCheckbox.bind(this)}
+              onChange={this.handleChange}
               value={this.state.vaiComparecer}
               />
             </label>
@@ -107,7 +83,7 @@ export default class Form extends Component {
               <select 
               name="palavraChaveFavorita"
               value={this.state.palavraChaveFavorita}
-              onChange={this.handleSelect.bind(this)}
+              onChange={this.handleChange}
               >
                 <option value="estado">Estado</option>
                 <option value="react">Rect</option>
@@ -115,6 +91,55 @@ export default class Form extends Component {
                 <option value="hooks">Hooks</option>
               </select>
             </label>
+
+              <fieldset>
+                <legend>Escolha um estado favorito</legend>
+
+              <label>
+                <input
+                name="selectedOption"
+                value="bahia"
+                type="radio"
+                checked={this.state.selectedOption === 'bahia'}
+                onChange={this.handleChange}
+                />
+                Bahia
+              </label>
+              
+              <label>
+   
+                <input 
+                  name="selectedOption"
+                  value="minas gerais"
+                  type="radio"
+                  checked={this.state.selectedOption === 'minas gerais'}
+                  onChange={this.handleChange}
+                />
+                Minas Gerais
+               </label>
+
+               <label>
+                <input
+                  onChange={this.handleChange}
+                  name="selectedOption"
+                  type="radio"
+                  checked={this.state.selectedOption === 'rio de janeiro'}
+                  value="rio de janeiro"
+                />
+                Rio de Janeiro
+               </label>
+ 
+               <label>
+                <input 
+                onChange={this.handleChange}
+                name="selectedOption"
+                value="sao paulo"
+                type="radio"
+                checked={this.state.selectedOption === 'sao paulo'}
+                />
+                Sao Paulo
+              </label>
+              </fieldset>
             
           </form>
         </div>
