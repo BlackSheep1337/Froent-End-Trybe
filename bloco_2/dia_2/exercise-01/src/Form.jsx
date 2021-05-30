@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+import EstadoFavorito from './components/EstadoFavorito';
+import Email from './components/Email';
+import Nome from './components/Nome';
+import Idade from './components/Idade';
+import VaiComparecer from './components/VaiComparecer';
+import PalavraChaveFavorita from './components/PalavraChaveFavorita';
+import SelectedOption from './components/SelectedOption'
+
 export default class Form extends Component {
   constructor() {
     super()
@@ -18,7 +26,6 @@ export default class Form extends Component {
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    console.log(value);
     this.setState({
       [name]: value
     })
@@ -30,117 +37,13 @@ export default class Form extends Component {
         <div>
           <h1>Estados em React: ferramenta incrivel ou reagindo a regionalismos?</h1>
           <form>
-            <label>
-              <textarea 
-                name="estadoFavorito" 
-                value={this.state.estadoFavorito} 
-                onChange={this.handleChange}>
-              </textarea>
-            </label>
-
-            <label>
-              Email
-              <input 
-              name="email" 
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-              />
-            </label>
-            
-            <label>
-              Nome
-              <input 
-              name="nome" 
-              type="text" 
-              onChange={this.handleChange}
-              value={this.state.nome}
-              />
-            </label>
-
-            <label>
-              Idade
-              <input
-              name="idade" 
-              type="number"
-              onChange={this.handleChange}
-              value={this.state.idade}
-              />
-            </label>
-            
-            <label>
-              vai comparecer a conferencia ?
-              <input 
-              name="vaiComparecer" 
-              type="checkbox" 
-              onChange={this.handleChange}
-              value={this.state.vaiComparecer}
-              />
-            </label>
-            
-            <label>
-              Escolha uma palavra favorita
-              <select 
-              name="palavraChaveFavorita"
-              value={this.state.palavraChaveFavorita}
-              onChange={this.handleChange}
-              >
-                <option value="estado">Estado</option>
-                <option value="react">Rect</option>
-                <option value="props">Props</option>
-                <option value="hooks">Hooks</option>
-              </select>
-            </label>
-
-              <fieldset>
-                <legend>Escolha um estado favorito</legend>
-
-              <label>
-                <input
-                name="selectedOption"
-                value="bahia"
-                type="radio"
-                checked={this.state.selectedOption === 'bahia'}
-                onChange={this.handleChange}
-                />
-                Bahia
-              </label>
-              
-              <label>
-   
-                <input 
-                  name="selectedOption"
-                  value="minas gerais"
-                  type="radio"
-                  checked={this.state.selectedOption === 'minas gerais'}
-                  onChange={this.handleChange}
-                />
-                Minas Gerais
-               </label>
-
-               <label>
-                <input
-                  onChange={this.handleChange}
-                  name="selectedOption"
-                  type="radio"
-                  checked={this.state.selectedOption === 'rio de janeiro'}
-                  value="rio de janeiro"
-                />
-                Rio de Janeiro
-               </label>
- 
-               <label>
-                <input 
-                onChange={this.handleChange}
-                name="selectedOption"
-                value="sao paulo"
-                type="radio"
-                checked={this.state.selectedOption === 'sao paulo'}
-                />
-                Sao Paulo
-              </label>
-              </fieldset>
-            
+            <EstadoFavorito value={this.state.estadoFavorito} handleChange={this.handleChange} />
+            <Email value={this.state.email} handleChange={this.handleChange} />
+            <Nome value={this.state.nome} handleChange={this.handleChange} />
+            <Idade value={this.state.idade} handleChange={this.handleChange} />
+            <VaiComparecer handleChange={this.handleChange} value={this.state.vaiComparecer} />
+            <PalavraChaveFavorita value={this.state.palavraChaveFavorita} handleChange={this.handleChange} />
+            <SelectedOption value={this.state.selectedOption} handleChange={this.handleChange} />
           </form>
         </div>
       </div>
