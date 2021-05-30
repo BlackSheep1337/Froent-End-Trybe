@@ -6,8 +6,8 @@ export default class Email extends Component {
 
     return (
       <label>
-        Email
-        <input 
+        <input
+        placeholder="E-Mail"
         name="email" 
         type="email"
         value={value}

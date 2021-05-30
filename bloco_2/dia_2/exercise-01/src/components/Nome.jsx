@@ -5,9 +5,9 @@ export default class Nome extends Component {
     const { value, handleChange } = this.props;
     return (
       <label>
-        Nome
         <input 
-        name="nome" 
+        name="nome"
+        placeholder="Nome"
         type="text"
         value={value}
         onChange={handleChange}

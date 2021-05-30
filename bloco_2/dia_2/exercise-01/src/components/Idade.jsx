@@ -5,9 +5,9 @@ export default class Idade extends Component {
     const { value, handleChange } = this.props;
     return (
       <label>
-        Idade
         <input
-        name="idade" 
+        name="idade"
+        placeholder="Idade"
         type="number"
         onChange={handleChange}
         value={value}

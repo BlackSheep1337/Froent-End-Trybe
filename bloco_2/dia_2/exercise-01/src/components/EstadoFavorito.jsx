@@ -9,9 +9,9 @@ export default class EstadoFavorito extends Component {
     }
     return (
       <label>
-      Deixe um comentario
       <textarea 
-        name="estadoFavorito" 
+        name="estadoFavorito"
+        placeholder="Qual seu estado favorito" 
         value={value}
         onChange={handleChange}>
       </textarea>
