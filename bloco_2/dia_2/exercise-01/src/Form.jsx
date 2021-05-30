@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 
 import EstadoFavorito from './components/EstadoFavorito';
 import Email from './components/Email';
@@ -36,14 +37,14 @@ export default class Form extends Component {
       <div>
         <div>
           <h1>Estados em React: ferramenta incrivel ou reagindo a regionalismos?</h1>
-          <form>
-            <EstadoFavorito value={this.state.estadoFavorito} handleChange={this.handleChange} />
+          <form  className="Form">
             <Email value={this.state.email} handleChange={this.handleChange} />
             <Nome value={this.state.nome} handleChange={this.handleChange} />
             <Idade value={this.state.idade} handleChange={this.handleChange} />
             <VaiComparecer handleChange={this.handleChange} value={this.state.vaiComparecer} />
             <PalavraChaveFavorita value={this.state.palavraChaveFavorita} handleChange={this.handleChange} />
             <SelectedOption value={this.state.selectedOption} handleChange={this.handleChange} />
+            <EstadoFavorito value={this.state.estadoFavorito} handleChange={this.handleChange} />
           </form>
         </div>
       </div>
