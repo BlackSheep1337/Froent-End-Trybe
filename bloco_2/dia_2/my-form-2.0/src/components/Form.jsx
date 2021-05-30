@@ -5,6 +5,9 @@ import Email from './Email';
 import Cpf from './Cpf';
 import Endereco from './Endereco';
 import Cidade from './Cidade';
+import Estado from './Estado';
+import Largadouro from './Largadouro';
+import CurriculoResum from './CurriculoResum';
 
 export default class Form extends Component {
   constructor() {
@@ -15,7 +18,9 @@ export default class Form extends Component {
       cpf: '',
       endereco: '',
       cidade: '',
-
+      estados: '',
+      largadouro: 'casa',
+      ultimoEmprego: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleErr = this.handleErr.bind(this);
@@ -55,6 +60,13 @@ export default class Form extends Component {
           <Cpf value={this.state.cpf} handleChange={this.handleChange} />
           <Endereco value={this.state.endereco} handleChange={this.handleChange} />
           <Cidade value={this.state.cidade} handleChange={this.handleChange} handleErr={this.handleErr} />
+          <Estado value={this.state.estados} handleChange={this.handleChange} />
+          <Largadouro value={this.state.largadouro} handleChange={this.handleChange} />
+        </fieldset>
+        <br />
+        <fieldset>
+          <h1>Dados do seu ultimo emprego</h1>
+          <CurriculoResum value={this.state.ultimoEmprego} handleChange={this.handleChange} />
         </fieldset>
       </form>
     )
