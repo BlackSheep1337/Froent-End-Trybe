@@ -4,8 +4,11 @@ export default class Endereco extends Component {
   render() {
     const { value, handleChange } = this.props;
     let e = '';
+    const format = /[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>?~]/;
     if (value.length > 200) {
       e = 'Limite de 200 caracteres';
+    } else if (format.test(value)) {
+      e = 'Endereco invalido';
     }
     return (
       <div>
