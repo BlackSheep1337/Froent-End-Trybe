@@ -21,9 +21,11 @@ export default class Form extends Component {
       estados: '',
       largadouro: 'casa',
       ultimoEmprego: '',
+      data: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleErr = this.handleErr.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange({ target }) {
@@ -43,32 +45,49 @@ export default class Form extends Component {
       })
     }
   }
+  
+  handleSubmit(e) {
+    e.preventDefault()
+    const data = this.state
+   this.setState({data})
+  }
 
   render() {
     return (
-      <form>
-        <fieldset>
-          <h1>Cadastro de curriculo</h1>
-          <Name 
-          handleChange={this.handleChange} 
-          value={this.state.name} 
-          />
-          <Email
-          handleChange={this.handleChange}
-          value={this.state.email}
-          />
-          <Cpf value={this.state.cpf} handleChange={this.handleChange} />
-          <Endereco value={this.state.endereco} handleChange={this.handleChange} />
-          <Cidade value={this.state.cidade} handleChange={this.handleChange} handleErr={this.handleErr} />
-          <Estado value={this.state.estados} handleChange={this.handleChange} />
-          <Largadouro value={this.state.largadouro} handleChange={this.handleChange} />
-        </fieldset>
-        <br />
-        <fieldset>
-          <h1>Dados do seu ultimo emprego</h1>
-          <CurriculoResum value={this.state.ultimoEmprego} handleChange={this.handleChange} />
-        </fieldset>
-      </form>
+      <main>
+        <form onSubmit={this.handleSubmit}>
+          <fieldset>
+            <h1>Cadastro de curriculo</h1>
+            <Name 
+            handleChange={this.handleChange} 
+            value={this.state.name} 
+            />
+            <Email
+            handleChange={this.handleChange}
+            value={this.state.email}
+            />
+            <Cpf value={this.state.cpf} handleChange={this.handleChange} />
+            <Endereco value={this.state.endereco} handleChange={this.handleChange} />
+            <Cidade value={this.state.cidade} handleChange={this.handleChange} handleErr={this.handleErr} />
+            <Estado value={this.state.estados} handleChange={this.handleChange} />
+            <Largadouro value={this.state.largadouro} handleChange={this.handleChange} />
+          </fieldset>
+          <br />
+          <fieldset>
+            <h1>Dados do seu ultimo emprego</h1>
+            <CurriculoResum value={this.state.ultimoEmprego} handleChange={this.handleChange} />
+          </fieldset>
+          <button>Submit</button>
+        </form>
+        <p>{this.state.data.name}</p> 
+        <p>{this.state.data.email}</p>
+        <p>{this.state.data.cpf}</p>
+        <p>{this.state.data.endereco}</p>
+        <p>{this.state.data.cidade}</p>
+        <p>{this.state.data.estados}</p>
+        <p>{this.state.data.largadouro}</p>
+        <p>{this.state.data.ultimoEmprego}</p>
+      </main>
     )
   }
 }

@@ -6,7 +6,8 @@ export default class Estado extends Component {
     return (
       <div>
         <label htmlFor="estado">Estado</label>
-          <select value={value} onChange={handleChange} id="estado" name="estados">
+          <select onChange={handleChange} id="estado" name="estados" value={value}>
+            <option value=""></option>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
