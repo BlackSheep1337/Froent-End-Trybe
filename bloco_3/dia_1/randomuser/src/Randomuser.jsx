@@ -24,24 +24,26 @@ export default class Randomuser extends Component {
       });
   }
 
+  shouldComponentUpdate(prevState) {
+    return true
+  }
+
   render() {
     const { results } = this.state;
-    const loading = <spa>Loading...</spa>
+    const loading = <span>Loading...</span>
     console.log(results);
     return (
       <div className="main">
-        <h1>User Data</h1>
+ 
         {!this.state.loading ?
-          results.map(({ name, gender, email, location, cell, phone, id }) => {
+          results.map(({ name, gender, email, login, phone, picture}) => {
             return (
               <div className="user">
-                <span key={ id.value }>Gender: { gender }</span>
-                <span key={ id.value }>Email: { email }</span>
-                <span key={ id.value }>Name: { name.first } { name.last }</span>
-                <span key={ id.value }>State: { location.state }</span>
-                <span key={ id.value }> City: { location.city }</span>
-                <span key={ id.value }>Cell: { cell }</span>
-                <span key={ id.value }>Phone: { phone }</span>
+                <img src={picture.medium} alt="" />
+                <span key={ phone }>Gender: { gender }</span>
+                <span key={ phone }>Email: { email }</span>
+                <span key={ phone }>Name: { name.first } { name.last }</span>
+                <span key={ phone }>User: { login.username }</span>
               </div>
             );
           })
