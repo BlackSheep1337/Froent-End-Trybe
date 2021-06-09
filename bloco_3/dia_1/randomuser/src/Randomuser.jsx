@@ -13,14 +13,15 @@ export default class Randomuser extends Component {
 
   componentDidMount() {
     const url = 'https://api.randomuser.me';
-    this.setState({loading: true},
+    this.setState(
+      {loading: true},
       async () => {
         const response = await fetch(url);
         const data = await response.json();
         this.setState({
         loading: false,
         results: data.results,
-        });  
+        });
       });
   }
 

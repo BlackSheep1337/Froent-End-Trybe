@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function Shop() {
@@ -7,12 +7,15 @@ function Shop() {
     fetchItems();
   }, []);
 
+  const [data, setItems] = useState([]);
+
   const fetchItems = async () => {
-    const url = 'https://fortnite-api.theapinetwork.com/upcoming/get';
+    const url = 'https://fakestoreapi.com/products/categories';
     const response = await fetch(url);
     const data  = await response.json();
-    console.log(data.data);
-  }
+    console.log(data)
+    setItems(data);
+  } 
 
 
   return (

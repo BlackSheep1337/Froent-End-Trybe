@@ -1,33 +1,43 @@
 import React, { Component } from 'react'
 
-export default class DadJoke extends Component {
-  constructor(props) {
-    super(props);
+class DadJoke extends React.Component {
+  constructor() {
+    super();
+
+    this.saveJoke = this.saveJoke.bind(this);
+    this.renderJokeElement = this.renderJokeElement.bind(this);
 
     this.state = {
       jokeObj: undefined,
       loading: true,
-      storedJoke: [],
-    };
-    this.saveJoke = this.saveJoke.bind(this);
-    this.renderJokeElement = this.renderJokeElement.bind(this);
+      storedJokes: [],
+    }
+    console.log('constructor');
   }
 
-  async fetchJoke() {
-    const requestHeaders = { headers: { Accept: 'application/json' } };
-    const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders);
+
+  async componentDidMount() {
+    this.setState(
+      {loading: true},
+    async () => {
+    console.log('componentDidMount');
+    const requestHeaders = { headers: { Accept: 'application/json' } }
+    const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders)
     const requestObject = await requestReturn.json();
     this.setState({
+      loading: false,
       jokeObj: requestObject,
-    });
-  }
-
-  componentDidMount() {
-    this.fetchJoke();
+    })
+  })
   }
 
   saveJoke() {
+    this.setState(({ storedJokes ,jokeObj }) => ({
+      storedJokes:  [...storedJokes, jokeObj],
+    }))
+    //Salvando a piada no array de piadas existentes
 
+    this.componentDidMount();
   }
 
   renderJokeElement() {
@@ -42,18 +52,20 @@ export default class DadJoke extends Component {
   }
 
   render() {
-    const { storedJokes } = this.state;
+    const { storedJokes, jokeObj, loading } = this.state;
     const loadingElement = <span>Loading...</span>;
-
+    console.log('render');
     return (
       <div>
         <span>
           {storedJokes.map(({ id, joke }) => (<p key={id}>{joke}</p>))}
         </span>
 
-      <span>RENDERIZAÇÃO CONDICIONAL</span>
+      <span>{loading ? loadingElement : this.renderJokeElement()}</span>
 
       </div>
     );
   }
 }
+
+export default DadJoke;
