@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
 import App from './App';
 
@@ -30,6 +30,18 @@ describe('Verifica tela de input', () => {
     expect(button).toBeInTheDocument();
     expect(button).toHaveValue('Voltar');
     expect(button.type).toBe('button');
+  })
+
+  it('verifica se ao clickar aparece o email', () => {
+    const { getByTestId, getByLabelText } = render(<App />);
+    const emailInput = getByLabelText('Email');
+    const sendBtn = getByTestId('id-send');
+    const emailUser = getByTestId('id-email-user');
+
+    fireEvent.change(emailInput, { target: { value: 'alexandre@gmail.com'}});
+    fireEvent.click(sendBtn);
+    expect(emailInput.value).toBe('');
+    expect(emailUser.textContent).toBe('Email digitado: alexandre@gmail.com');
   })
 })
 //acessar os elementos da sua tela

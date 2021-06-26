@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import EmailValido from './EmailValido';
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -12,7 +13,7 @@ function App() {
     setInputs({ email: '', salvedEmail: inputs.email })
 
   }
-
+  const { email, salvedEmail } = inputs;
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
@@ -22,7 +23,7 @@ function App() {
             id="email"
             type="email"
             name="name"
-            value={ inputs.email }
+            value={ email }
             onChange={({ target: { value }}) => setInputs({ email : value })}
           />
         </label>
@@ -40,8 +41,9 @@ function App() {
         />
       </form>
       <div>
-        <h3>Email digitado: {inputs.salvedEmail}</h3>
+        <h3 data-testid="id-email-user">Email digitado: { salvedEmail }</h3>
       </div>
+      <EmailValido email={ salvedEmail } />
     </div>
   );
 }
