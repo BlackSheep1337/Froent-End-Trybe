@@ -29,5 +29,8 @@ export const useStyles = makeStyles({
   itemCompleted: {
     textDecoration: 'line-through',
     color: 'gray',
+  },
+  clearBtn: {
+    marginLeft: '900px',
   }
 });

@@ -8,6 +8,7 @@ import { useStyles } from './styles'
 
 export default function Todo({ text, id, completedItem, deleteItem, completed }) {
   const classes = useStyles();
+
   return (
     <Grid item  className={classes.item}>
       <li className={`${completed ? classes.itemCompleted : ''}`}>{ text }</li>

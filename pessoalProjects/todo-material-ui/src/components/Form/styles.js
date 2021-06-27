@@ -60,5 +60,18 @@ export const useStyles = makeStyles({
     marginTop: '20px',
     textAlign: 'center',
     width: '150px',
+  },
+  links: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  hub: {
+    color: 'white',
+    marginLeft: '20px',
+    fontSize: '30px',
+  },
+  din: {
+    color: 'white',
+    fontSize: '32px',
   }
 });

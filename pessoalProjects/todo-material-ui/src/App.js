@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Alert from './components/alert/Alert';
 import Form from './components/Form/Form';
 import TodoList from './components/TodoList/TodoList';
@@ -13,6 +13,18 @@ export default function App() {
     type: '',
   });
   const [status, setStatus] = useState('all');
+  const [filtredTodos, setFiltredTodos] = useState([]);
+
+  useEffect(() => {
+    setFiltredTodos(todos);
+    if (status === 'completed') {
+      setFiltredTodos(todos.filter(({ completed }) => completed))
+    } else if (status === 'uncompleted') {
+      setFiltredTodos(todos.filter(({ completed }) => !completed))
+    } else {
+      setFiltredTodos(todos.map((item) => item))
+    }
+  }, [status, todos])
 
 
   const handleSubmit = e => {
@@ -21,7 +33,7 @@ export default function App() {
       showAlert(true, 'Invalid item', 'danger');
       return;
     }
-    setTodos([...todos, { id: Math.random() * 1000, completed: false, text: inputText}]);
+    setTodos([...todos, { id: Math.random() * 100, completed: false, text: inputText}]);
     setInputText('');
     showAlert(true, 'Item added', 'success');
   }
@@ -37,9 +49,12 @@ export default function App() {
 
   const completedItem = id => {
     setTodos(todos.map((todo) => {
-      todo.completed === false ? showAlert(true, 'Item done', 'success')
-      : showAlert(true, 'Item undone', 'danger');
-
+      if(todo.completed === false) {
+       showAlert(true, 'Item done', 'success')
+      }
+      if (todo.completed === true) {
+        showAlert(true, 'Item undone', 'danger');
+      }
       if (todo.id === id) {
         return {
           ...todo,
@@ -61,7 +76,9 @@ export default function App() {
       />
       {alert.show && <Alert todos={ todos } setAlert={setAlert} alert={ alert } />}
       <TodoList
-        todos={ todos }
+        filtredTodos={ filtredTodos }
+        showAlert={ showAlert }
+        setTodos={ setTodos }
         deleteItem={ deleteItem }
         completedItem={ completedItem }
       />
