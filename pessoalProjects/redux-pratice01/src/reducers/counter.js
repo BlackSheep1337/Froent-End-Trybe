@@ -1,8 +1,12 @@
-const CounterReducer = (state = 5, action) => {
+const inicialState = {
+  count: 5
+}
+
+const CounterReducer = (state = 0, action) => {
   switch(action.type) {
     case 'INCREMENT' :
       return state + 1
-    case 'DECREMENT':
+    case 'DECRIMENT':
       return state - 1
     default:
       return state
