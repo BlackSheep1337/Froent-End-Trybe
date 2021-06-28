@@ -22,16 +22,46 @@ export default function App() {
   useEffect(() => {
     fetchData();
   }, [])
+  
+  useEffect(() => {
+    const timeout = setInterval(() => {
+      const random = Math.floor(Math.random() * 19);
+      setIndex(random);
+    }, 3000)
+    return () => clearInterval(timeout);
+  }, [index])
+
+  const checkIndex = indexToCheck => {
+    if(indexToCheck < 0) {
+      return list.length - 1;
+    }
+    if(indexToCheck > list.length - 1) {
+      return 0;
+    }
+    return indexToCheck;
+  }
+
+  const handleClickRight = () => {
+    setIndex(checkIndex(index + 1));
+  }
+  const handleClickLeft = () => {
+    setIndex(checkIndex(index - 1));
+  }
 
   if (isLoading) {
     return (
       <h1>Carregando...</h1>
     )
-  }
+  } 
 
   return (
+   
     <>
-      <Slider item={ list[index] } />
+      <Slider
+        item={ list[index] }
+        handleClickLeft={ handleClickLeft }
+        handleClickRight={ handleClickRight }
+      />
     </>
   )
 }

@@ -21,11 +21,11 @@ export const useStyles = makeStyles({
   },
   btnContainer: {
     display: 'flex',
-    width: '300px',
+    width: '400px',
     justifyContent: 'space-between',
   },
   card: {
-    width: 300,
+    width: 400,
     border: '1px solid black',
     display: 'flex',
     justifyContent: 'center'
@@ -39,12 +39,28 @@ export const useStyles = makeStyles({
     textAlign: 'center',
   },
   cardImg: {
-    width: 300,
+    width: 400,
     height: 350,
   },
   cardContent: {
     display: 'flex',
     flexFlow: 'column',
   },
+  navbar: {
+    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  in: {
+    fontSize: 30,
+    marginLeft: 10,
+    color: 'white',
+  },
+  hb: {
+    fontSize: 30,
+    marginLeft: 10,
+    color: 'white',
+  }
 
 })

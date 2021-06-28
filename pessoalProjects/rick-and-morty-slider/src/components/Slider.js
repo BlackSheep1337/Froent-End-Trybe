@@ -1,15 +1,29 @@
 import React from 'react';
 import Slide from './Slide';
-import { Container, Box, Button, Typography, ButtonGroup, Paper } from '@material-ui/core';
+import { Container, Box, Button, Typography, ButtonGroup, Paper, AppBar, Toolbar } from '@material-ui/core';
 import { useStyles } from './styles';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
-
-export default function Slider({ item }) {
+export default function Slider({ item, handleClickRight, handleClickLeft }) {
   const classes = useStyles();
   return (
     <Container className={classes.section}>
+      <AppBar>
+        <Toolbar className={classes.navbar}>
+          <Typography variant="h4">
+            Slider my by Alexandre Pereira
+            <a target="_blank" href="https://www.linkedin.com/in/alexandre-pereira-0aba82205/">
+              <LinkedInIcon className={classes.in} />
+            </a>
+            <a target="_blank" href="https://github.com/Naitwa-Alexandre">
+              <GitHubIcon className={classes.hb}/>
+            </a>
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Box className={classes.header}>
         <Typography variant="h4" color="primary">Watch now news episodios of Rick and Morty!</Typography>
       </Box>
@@ -20,10 +34,10 @@ export default function Slider({ item }) {
           </Box>
         </Paper>
         <ButtonGroup  color="primary" variant="contained" className={classes.btnContainer}>
-          <Button classes={classes.left}>
+          <Button onClick={ handleClickLeft } classes={classes.left}>
           <ArrowLeftIcon />
           </Button >
-          <Button classes={classes.right}>
+          <Button onClick={ handleClickRight } classes={classes.right}>
             <ArrowRightIcon />
           </Button>
         </ButtonGroup>
