@@ -1,9 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
-export default function Title() {
+function Title({ counter }) {
   return (
       <div className="header">
-        <h1>Todo x Tarefas</h1>
+        <h1>TODO</h1>
+        <h3>Possui { counter } Tarefas</h3>
       </div>
   );
 }
+
+
+const mapStateToProps = state => ({
+  counter: state.todoReducer.counterTask
+})
+
+export default connect(mapStateToProps)(Title);

@@ -7,9 +7,9 @@ export default function todoReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
     case 'ADD_TASK' :
       return {
-        ...state,
+        task: [...state, action.task ],
         counterTask: state.counterTask + 1,
-        task: action.payload.name
+      
       }
 
 
