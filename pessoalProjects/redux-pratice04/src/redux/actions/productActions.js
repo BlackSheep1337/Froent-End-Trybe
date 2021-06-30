@@ -1,6 +1,6 @@
-import { actionTypes } from '../contants/action-types';
+import { ActionTypes } from '../contants/action-types';
 
-const { SET_PRODUCTS,  SELECTED_PRODUCT } = actionTypes;
+const { SET_PRODUCTS,  SELECTED_PRODUCT } = ActionTypes;
 
 export const setProducts = (products) => {
   return {
