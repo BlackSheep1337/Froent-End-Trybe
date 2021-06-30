@@ -1,43 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { connect } from 'react-redux';
 
-const inicialState = [
-{
-  title: 'Iniciando em React',
-  id: 1,
-  lessons: [
-    {id: 1, title: 'primeira aula'},
-    {id: 2, title: 'segunda aula'}
-  ]
-},
-  {
-    title:'Aprendendo Redux',
-    id: 2,
-    lessons: [
-      {id: 3, title: 'terceira aula'},
-      {id: 4, title: 'quarta aula'}
-    ]
-  }
 
-]
 
-export default function Sidebar() {
-  const [list, setList] = useState(inicialState);
+function toggleLesson(module, lesson) {
+  return {
+    type: 'TOGGLE_LESSON',
+    module,
+    lesson,
+  };
+}
 
-  console.log(list);
+function Sidebar({ modules, dispatch }) {
   return (
     <aside>
-        {list.map(({ title, lessons, id }) => {
-          return (
-          <div key={ id }>
-            <strong>{ title }</strong>
-            <ul>
-              {lessons.map(({ title, id }) => (
-                <li key={ id }>{ title }</li>
-              ))}
-            </ul>
-          </div>
-          );
-        })}
+      {modules.map((module) => {
+        const { id, title, lessons } = module;
+        return (
+        <div key={ id }>
+          <strong>{ title }</strong>
+          <ul>
+            {lessons.map((lesson) => (
+              <li key={ lesson.id }>{ lesson.title }
+                <button onClick={() => dispatch(toggleLesson(modules, lesson))}>
+                  Arquive
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        );
+      })}
     </aside>
   )
 }
+
+export default connect(state => ({
+  modules: state.modules,
+  activeModule: state.activeModule,
+  activeLesson: state.activeLesson
+}))(Sidebar);
