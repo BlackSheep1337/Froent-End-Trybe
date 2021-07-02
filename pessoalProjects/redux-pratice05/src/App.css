@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 300px;
+  height: 500px;
+}
+
+input {
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid lightblue;
+  padding-left: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  margin-top: 20px;
+  width: 300px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  font-size: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.logout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 300px;
+  height: 500px;
+}
+
+.logout-header {
+  font-size: 20px;
+}
+
+.logout-header span {
+  color: rgb(108, 138, 148);
+}
+
+.change-pass {
+  margin-top: 20px;
+}
