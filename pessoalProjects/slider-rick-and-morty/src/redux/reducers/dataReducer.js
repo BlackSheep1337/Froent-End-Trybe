@@ -8,7 +8,8 @@ const dataReducer = (state = INITIAL_STATE, { type, payload}) => {
   switch (type) {
     case FETCH_DATA:
       return {
-        data: [...state, payload]
+        ...state,
+        data: payload,
       }
     default:
       return state;

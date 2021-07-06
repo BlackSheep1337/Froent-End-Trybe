@@ -1,8 +1,8 @@
 export const FETCH_DATA = 'FETCH_DATA';
 
-export const fetchData = (payload) => {
+export const fetchData = (data) => {
   return {
     type: FETCH_DATA,
-    data: payload
+    payload: data,
   }
 }
