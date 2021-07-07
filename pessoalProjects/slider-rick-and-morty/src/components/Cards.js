@@ -1,26 +1,51 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Section, SliderWrapper } from './styles';
+import { useSelector, useDispatch } from 'react-redux';
 import Slider from './Slider';
-import { fetchData } from '../redux/actions';
+import { fetchData, showLoader, hideLoader } from '../redux/actions';
+import axios from 'axios';
+import Card from './Card';
 
 function Cards() {
-  const dispatch = useDispatch()
+  const loading = useSelector(state => state.dataReducer.loading);
   const state = useSelector(state => state.dataReducer.data);
-
-
+  const dispatch = useDispatch();
+  const url = 'https://rickandmortyapi.com/api/character';
+  console.log(state);
 
   useEffect(() => {
-   dispatch(fetchData(['hellow World']));
-  }, [])
+    dispatch(showLoader());
+    const handleFetchData = async () => {
+      try {
+        const { data } = await axios.get(url);
+        dispatch(fetchData(data.results));
+        dispatch(hideLoader());
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    handleFetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  if (loading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
 
-  console.log(state);
   return (
-    <div>
-      <Slider />
-      <h1>Cards</h1>
-    </div>
+    <>
+      <SliderWrapper>
+        <Slider />
+      </SliderWrapper>
+      <Section>
+        {state.map((card, idx) => <Card key={ idx } {...card }/>)}
+      </Section>
+    </>
   )
 }
 
-export default Cards
+export default Cards;

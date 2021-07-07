@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Nav, Header, SearchForm } from './styles';
+
 
 function Navbar() {
   return (
-    <div>
-      <h1>Navibar</h1>
-    </div>
+    <Nav>
+      <Header>
+        <h1>Rick and Morty</h1>
+      </Header>
+    </Nav>
   )
 }
 
