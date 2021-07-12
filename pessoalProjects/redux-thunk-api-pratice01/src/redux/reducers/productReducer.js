@@ -3,15 +3,18 @@ import { ActionTypes } from '../contants/actionTypes';
 const INITIAL_STATE = {
   products: [{
     id: 1,
-    title: 'XANDAO',
+    name: 'XANDAO',
     category: 'Programmer',
   }]
 }
 
-const productReducer = (state = INITIAL_STATE, { type, peyload }) => {
+const productReducer = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
-      return state;
+      return {
+        ...state,
+        products: payload,
+      }
     default:
       return state;
   }
