@@ -11,7 +11,6 @@ function Cards() {
   const state = useSelector(state => state.dataReducer.data);
   const dispatch = useDispatch();
   const url = 'https://rickandmortyapi.com/api/character';
-  console.log(state);
 
   useEffect(() => {
     dispatch(showLoader());
@@ -19,6 +18,7 @@ function Cards() {
       try {
         const { data } = await axios.get(url);
         dispatch(fetchData(data.results));
+        console.log(data);
         dispatch(hideLoader());
       } catch (error) {
         console.log(error);

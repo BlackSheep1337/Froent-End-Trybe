@@ -23,7 +23,7 @@ function Slider() {
     return idx;
   }
   const { name, image, status, location, species } = state[checkIndex(index)];
-
+  
   return (
     <SliderContent>
       <img src={ image } alt={ name } />
